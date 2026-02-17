@@ -6,7 +6,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from data_preprocessing import load_and_clean_data, prepare_features
 from models import ChurnModels
-from evaluation import print_metrics, plot_feature_importance, plot_confusion_matrix
+from evaluation import plot_feature_importance, plot_confusion_matrix
 
 st.set_page_config(page_title="Churn Predictor", layout="wide")
 st.title("Telco Customer Churn Predictor")
