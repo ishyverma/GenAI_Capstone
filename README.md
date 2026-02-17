@@ -24,7 +24,7 @@ The application is designed to help business stakeholders understand **who is li
 ## 🏗️ System Design
 
 <p align="center">
-  <img src="assets/geniai_capstone_systemdesign.png" alt="System Architecture Diagram" width="100%"/>
+  <img src="assets/genai_capstone_systemdesign.png" alt="System Architecture Diagram" width="100%"/>
 </p>
 
 ---
