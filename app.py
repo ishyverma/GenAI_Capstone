@@ -6,7 +6,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from data_preprocessing import load_and_clean_data, prepare_features
 from models import ChurnModels
-from evaluation import plot_feature_importance, plot_confusion_matrix
+from evaluation import print_metrics, plot_feature_importance, plot_confusion_matrix
 
 st.set_page_config(page_title="Churn Predictor", layout="wide")
 st.title("Telco Customer Churn Predictor")
@@ -49,6 +49,7 @@ if uploaded_file is not None:
             
             st.session_state.models = models
             st.session_state.y_test = y_test
+            st.session_state.y_test = y_test
             st.session_state.predictions = {
                 'log_proba': log_proba, 'dt_proba': dt_proba,
                 'log_pred': log_pred, 'dt_pred': dt_pred,
@@ -67,6 +68,17 @@ if uploaded_file is not None:
                 st.info("**Logistic Regression wins** - Better generalization")
             else:
                 st.info("**Decision Tree wins** - Captures non-linear patterns")
+    
+    # ── Confusion Matrices ──
+    if st.session_state.predictions is not None:
+        st.subheader("Confusion Matrices")
+        preds = st.session_state.predictions
+        y_true = st.session_state.y_test
+        cm_col1, cm_col2 = st.columns(2)
+        with cm_col1:
+            plot_confusion_matrix(y_true, preds['log_pred'], 'Logistic Regression')
+        with cm_col2:
+            plot_confusion_matrix(y_true, preds['dt_pred'], 'Decision Tree')
     
     # ── Confusion Matrices ──
     if st.session_state.predictions is not None:
