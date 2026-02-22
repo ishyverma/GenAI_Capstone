@@ -80,17 +80,6 @@ if uploaded_file is not None:
         with cm_col2:
             plot_confusion_matrix(y_true, preds['dt_pred'], 'Decision Tree')
     
-    # ── Confusion Matrices ──
-    if st.session_state.predictions is not None:
-        st.subheader("Confusion Matrices")
-        preds = st.session_state.predictions
-        y_true = st.session_state.y_test
-        cm_col1, cm_col2 = st.columns(2)
-        with cm_col1:
-            plot_confusion_matrix(y_true, preds['log_pred'], 'Logistic Regression')
-        with cm_col2:
-            plot_confusion_matrix(y_true, preds['dt_pred'], 'Decision Tree')
-    
     with col2:
         st.subheader("Sample Predictions")
         if st.session_state.predictions is not None:
